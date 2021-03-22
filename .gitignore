@@ -1,0 +1,4 @@
+jsroot/node_modules
+plotly/node_modules
+jsroot/package-lock.json
+plotly/package-lock.json
