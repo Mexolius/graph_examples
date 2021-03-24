@@ -33,7 +33,7 @@ class JSRootExample extends React.Component {
             histo.fName = "generated";
             histo.fTitle = "Drawing " + cnt++;
             console.log(histo);
-            JSROOT.draw(this.canvas.current, histo);
+            JSROOT.redraw(this.canvas.current, histo);
             console.log("Did mount");
             this.forceUpdate();
         }

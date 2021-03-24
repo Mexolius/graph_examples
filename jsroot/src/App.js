@@ -43,5 +43,5 @@ class App extends Component {
 }
 
 export default scriptLoader(
-  'https://root.cern.ch/js/latest/scripts/JSRootCore.js'
+  'https://root.cern.ch/js/latest/scripts/JSRoot.core.js'
 )(App);
