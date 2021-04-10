@@ -16,7 +16,6 @@ class App extends Component {
         this.setState({
           isReady: true
         });
-        console.log('ready');
       }
       else this.setState({
         hasError: true
@@ -25,12 +24,12 @@ class App extends Component {
   }
 
 
+
+
   render() {
-    console.log(this.props)
-    if (this.props.isScriptLoadSucceed) {
+    if (this.state.isReady) {
       return (
         <div>
-          <h1>Hello</h1>
           <JSRootExample render={true} name='hist1' />
         </div>
       );
