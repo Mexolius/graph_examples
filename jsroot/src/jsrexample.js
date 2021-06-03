@@ -9,10 +9,10 @@ class JSRootExample extends React.Component {
         const current_data = data.stopping_power[type]
         if(current_data===undefined) return undefined;
     
-        //const graph = this.JSROOT.createTGraph(data.kinetic_energy.length, data.kinetic_energy, current_data);
-        const graph = this.JSROOT.createHistogram('TH1F', data.kinetic_energy.length-2);
+        const graph = this.JSROOT.createTGraph(data.kinetic_energy.length, data.kinetic_energy, current_data);
+        //const graph = this.JSROOT.createHistogram('TH1F', data.kinetic_energy.length-2);
         
-        graph.fLineColor=fill_color;
+        /*graph.fLineColor=fill_color;
         graph.fLineStyle=line_style;
         graph.fLineWidth=2;
         
@@ -39,16 +39,17 @@ class JSRootExample extends React.Component {
 
     componentDidMount() {
         
-        const g1 = this.prepare_graph('electronic',1,1);
+        //const g1 = this.prepare_graph('electronic',1,1);
         const g2 =this.prepare_graph('nuclear',1,1);
-        const g3 =this.prepare_graph('total',2,2);
-        console.log(g2.fYaxis);
-        //g2.fXaxis.fTitle = '1';
-        //g3.fXaxis.fTitle = '1';
-        //console.log(Object.create(this.JSROOT.AxisBasePainter.prototype).poduceLogTicks({ticks:x=>x.map(y=>y*y)},[2,2]));
-        const stack = this.JSROOT.createTHStack( g2)
+        //const g3 =this.prepare_graph('total',2,2);
+        //const stack = this.JSROOT.createTHStack(/*g1,g3,*/ g2)
 
-        this.JSROOT.draw(this.canvas.current, stack,'logx;logy;C;nostack');
+        g2.fFunctions.opt.push('LOGX');
+        g2.fFunctions.opt.push('LOGY');
+
+        console.log(g2);
+
+        this.JSROOT.draw(this.canvas.current, g2,'LOGX');
         this.initJS();
     }
 
